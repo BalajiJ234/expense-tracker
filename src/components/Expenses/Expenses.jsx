@@ -29,9 +29,11 @@ const Expenses = (props) => {
         .sort((prev, next) =>
           prev.date < next.date ? 1 : next.date < prev.date ? -1 : 0
         ) //Recent expenses....
+        // .filter((expense) => expense.date.getFullYear() === filteredYear)
         .map((expense) => {
           return (
             <ExpenseItem
+              key={expense.id}
               date={expense.date}
               title={expense.title}
               amount={expense.amount}
