@@ -3,44 +3,69 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  // const [title, setTitle] = useState("");
-  // const [amount, setAmount] = useState("");
-  // const [date, setDate] = useState("");
-  const [expenseInput, setExpenseInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  // const [expenseInput, setExpenseInput] = useState({
+  //   enteredTitle: "",
+  //   enteredAmount: "",
+  //   enteredDate: "",
+  // });
 
   const titleChangeHandler = (event) => {
-    setExpenseInput({
-      ...expenseInput,
-      enteredTitle: event.target.value,
-    });
+    setTitle(event.target.value);
+    // setExpenseInput({
+    //   ...expenseInput,
+    //   enteredTitle: event.target.value,
+    // }); // It's will also working fine
+    /**
+     * But this is a good practice, while updating single property of a state.
+     * Key Point :- If your state update depends on the previous state,
+     * use this (prevState) function concept.
+     */
+    // setExpenseInput((prevState) => {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
   };
   const amountChangeHandler = (event) => {
-    setExpenseInput({
-      ...expenseInput,
-      enteredAmount: event.target.value,
-    });
+    setAmount(event.target.value);
+    // setExpenseInput({
+    //   ...expenseInput,
+    //   enteredAmount: event.target.value,
+    // });
+    // setExpenseInput((prevState) => {
+    //   return { ...prevState, enteredAmount: event.target.value };
+    // });
   };
   const dateChangeHandler = (event) => {
-    setExpenseInput({
-      ...expenseInput,
-      enteredDate: event.target.value,
-    });
+    setDate(event.target.value);
+    // setExpenseInput({
+    //   ...expenseInput,
+    //   enteredDate: event.target.value,
+    // });
+    // setExpenseInput((prevState) => {
+    //   return { ...prevState, enteredDate: event.target.value };
+    // });
   };
 
+  const submitHandler = (event) => {
+    /**This is default Javascript behavior.
+     * This method is, prevent the application from default reloading function.
+     */
+    event.preventDefault();
+    const expenseData = {
+      title: title,
+      amount: amount,
+      date: new Date(date),
+    };
+    console.log(expenseData);
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
-          <input
-            type='text'
-            value={expenseInput.enteredTitle}
-            onChange={titleChangeHandler}
-          />
+          <input type='text' value={title} onChange={titleChangeHandler} />
         </div>
         <div className='new-expense__control'>
           <label>Amount</label>
@@ -48,7 +73,7 @@ const ExpenseForm = () => {
             type='number'
             min='0.01'
             step='0.01'
-            value={expenseInput.enteredAmount}
+            value={amount}
             onChange={amountChangeHandler}
           />
         </div>
@@ -58,7 +83,7 @@ const ExpenseForm = () => {
             type='date'
             min='2019-01-01'
             max='2022-12-31'
-            value={expenseInput.enteredDate}
+            value={date}
             onChange={dateChangeHandler}
           />
         </div>
