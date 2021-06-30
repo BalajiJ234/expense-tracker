@@ -58,7 +58,26 @@ const ExpenseForm = (props) => {
       amount: amount,
       date: new Date(date),
     };
-    //Child (ExpenseForm) Component to Parent(NewExpense) Component Communication (Bottom-up)
+    /**
+     * Child (ExpenseForm) Component to
+     * Parent(NewExpense) Component Communication (Bottom-up)
+     *
+     * ---Bottom Up---
+     * Concept of moving data from a child to a parent
+     * component by utilizing props to receive a function
+     * from the parent component which we call in the
+     * child component.
+     *
+     * ---Lifting the State Up--
+     * By passing our generated state data from the new expense
+     * (ExpenseForm -> NewExpense) to the App component.
+     * Lifting the state up.
+     * =====================
+     * We are passing data up to some parent component because
+     * we either need that data directly in the particular component
+     * (eg., App component) or we then want to pass that data down to
+     * another component via props.
+     */
     props.onSaveExpenseData(expenseData);
     setTitle("");
     setAmount("");
