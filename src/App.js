@@ -29,6 +29,11 @@ const App = () => {
       .reduce((prev, next) => prev + next);
     return total;
   };
+
+  const addExpenseHandler = (expense) => {
+    console.log("In App.js...");
+    console.log(expense);
+  };
   //without JSX
   // return React.createElement(
   //   "div",
@@ -41,7 +46,7 @@ const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
       <p>{total_expenses()}</p>
     </div>
