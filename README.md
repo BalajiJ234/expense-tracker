@@ -48,4 +48,4 @@
 
   ### `map()`
   - Why should you add the special "key" prop to list JSX elements?
-    - > It's requered for React to correctly identity and update(if needed) the list elements. It's a unique identification criteria for every element.
+    - > It's required for React to correctly identity and update(if needed) the list elements. It's a unique identification criteria for every element.
