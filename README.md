@@ -17,19 +17,21 @@
 - useState returns an array with exactly two elements - the second element is always a function which you can call to set a new value for your state. Calling that function will then also trigger React to re-evaluate the component.
 - If you update state that depends on the previous state, you should use the "function form" of the state updating function instead.
 - For example,
-     ```setExpenseInput({
+     ```
+     setExpenseInput({
        ...expenseInput,
        enteredTitle: event.target.value,
-     }); // It's will also working fine```
+     }); // It's will also working fine
+     ```
 
   - But this is a good practice, while updating single property of a state.
   - Key Point :- If your state update depends on the previous state use this (prevState) function concept.
     
-```
-setExpenseInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value };
-});
-```
+    ```
+    setExpenseInput((prevState) => {
+          return { ...prevState, enteredTitle: event.target.value };
+    });
+    ```
 
 ### `Bottom Up & Lifting up the State`
 - Child (ExpenseForm) Component to Parent(NewExpense) Component Communication (Bottom-up)
