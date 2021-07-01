@@ -11,19 +11,26 @@ const NewExpense = (props) => {
       id: Math.random().toString(),
     };
     props.onAddExpense(expenseData);
+    setIsEnable(false);
   };
 
-  const handleEnable = (isEnable) => {
-    setIsEnable(isEnable);
+  const enableAddExpense = () => {
+    setIsEnable(true);
+  };
+
+  const disableAddExpense = () => {
+    setIsEnable(false);
   };
 
   return (
     <div className='new-expense'>
-      <ExpenseForm
-        onSaveExpenseData={saveExpenseDataHandler}
-        enable={isEnable}
-        onShow={handleEnable}
-      />
+      {!isEnable && <button onClick={enableAddExpense}>Add New Expense</button>}
+      {isEnable && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancel={disableAddExpense}
+        />
+      )}
     </div>
   );
 };
