@@ -22,16 +22,6 @@ const Expenses = (props) => {
 
   return (
     <Card className='expenses'>
-      {/**
-       * Controlled Components, -> whenever we use two way binding
-       * you are controlling a component.
-       * -> It means that a value which is used in the component
-       * (like the value selected in the
-       * dropdown) is passed on to a parent component
-       * through props and is received from the parent component.
-       * -> The value and handles the value does not belong to the
-       * particular component which is called a controlled component.
-       */}
       <ExpensesFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}

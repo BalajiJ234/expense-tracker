@@ -6,78 +6,25 @@ const ExpenseForm = (props) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
-  // const [expenseInput, setExpenseInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
-  // });
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
-    // setExpenseInput({
-    //   ...expenseInput,
-    //   enteredTitle: event.target.value,
-    // }); // It's will also working fine
-    /**
-     * But this is a good practice, while updating single property of a state.
-     * Key Point :- If your state update depends on the previous state,
-     * use this (prevState) function concept.
-     */
-    // setExpenseInput((prevState) => {
-    //   return { ...prevState, enteredTitle: event.target.value };
-    // });
   };
   const amountChangeHandler = (event) => {
     setAmount(event.target.value);
-    // setExpenseInput({
-    //   ...expenseInput,
-    //   enteredAmount: event.target.value,
-    // });
-    // setExpenseInput((prevState) => {
-    //   return { ...prevState, enteredAmount: event.target.value };
-    // });
+    //Please refer the README.md file
   };
   const dateChangeHandler = (event) => {
     setDate(event.target.value);
-    // setExpenseInput({
-    //   ...expenseInput,
-    //   enteredDate: event.target.value,
-    // });
-    // setExpenseInput((prevState) => {
-    //   return { ...prevState, enteredDate: event.target.value };
-    // });
   };
 
   const submitHandler = (event) => {
-    /**This is default Javascript behavior.
-     * This method is, prevent the application from default reloading function.
-     */
     event.preventDefault();
     const expenseData = {
       title: title,
       amount: amount,
       date: new Date(date),
     };
-    /**
-     * Child (ExpenseForm) Component to
-     * Parent(NewExpense) Component Communication (Bottom-up)
-     *
-     * ---Bottom Up---
-     * Concept of moving data from a child to a parent
-     * component by utilizing props to receive a function
-     * from the parent component which we call in the
-     * child component.
-     *
-     * ---Lifting the State Up--
-     * By passing our generated state data from the new expense
-     * (ExpenseForm -> NewExpense) to the App component.
-     * Lifting the state up.
-     * =====================
-     * We are passing data up to some parent component because
-     * we either need that data directly in the particular component
-     * (eg., App component) or we then want to pass that data down to
-     * another component via props.
-     */
     props.onSaveExpenseData(expenseData);
     setTitle("");
     setAmount("");
