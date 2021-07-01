@@ -47,5 +47,5 @@
 -  ```event.preventDefault()```  This is default Javascript behavior. This method is, prevent the application from default reloading function.
 
   ### `map()`
-    - Why should you add the special "key" prop to list JSX elements?
-      - > It's requered for React to correctly identity and update(if needed) the list elements. It's a unique identification criteria for every element.
+  - Why should you add the special "key" prop to list JSX elements?
+    - > It's requered for React to correctly identity and update(if needed) the list elements. It's a unique identification criteria for every element.
