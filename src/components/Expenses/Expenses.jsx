@@ -6,9 +6,35 @@ import { useState } from "react";
 
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2020");
+
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
+
+  const filteredExpenses = props.expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  //Recent expenses....
+  const recentExpenses = filteredExpenses.sort((prev, next) => {
+    return prev.date < next.date ? 1 : next.date < prev.date ? -1 : 0;
+  });
+
+  let expensesContent = <p>No expenses found.</p>;
+
+  if (recentExpenses.length > 0) {
+    expensesContent = recentExpenses.map((expense) => {
+      return (
+        <ExpenseItem
+          key={expense.id}
+          date={expense.date}
+          title={expense.title}
+          amount={expense.amount}
+        />
+      );
+    });
+  }
+
   return (
     <Card className='expenses'>
       {/**
@@ -25,21 +51,7 @@ const Expenses = (props) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {props.expenses
-        .sort((prev, next) =>
-          prev.date < next.date ? 1 : next.date < prev.date ? -1 : 0
-        ) //Recent expenses....
-        // .filter((expense) => expense.date.getFullYear() === filteredYear)
-        .map((expense) => {
-          return (
-            <ExpenseItem
-              key={expense.id}
-              date={expense.date}
-              title={expense.title}
-              amount={expense.amount}
-            />
-          );
-        })}
+      {expensesContent}
     </Card>
   );
 };

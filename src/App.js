@@ -7,7 +7,7 @@ const DUMMY_EXPENSES = [
     id: "e1",
     title: "Mobile Recharge",
     amount: 597.0,
-    date: new Date(2021, 6, 28),
+    date: new Date(2020, 6, 28),
   },
   { id: "e2", title: "Wifi Bill", amount: 942.82, date: new Date(2021, 6, 15) },
   {
@@ -20,13 +20,13 @@ const DUMMY_EXPENSES = [
     id: "e4",
     title: "Mini Screwdriver Set",
     amount: 309.0,
-    date: new Date(2021, 6, 27),
+    date: new Date(2022, 1, 11),
   },
   {
     id: "e5",
     title: "Wireless Headphone",
     amount: 1099.0,
-    date: new Date(2021, 6, 27),
+    date: new Date(2020, 9, 27),
   },
   {
     id: "e6",
